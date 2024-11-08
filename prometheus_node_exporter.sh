@@ -1,10 +1,12 @@
 #!/bin/bash
 
-wget https://github.com/prometheus/node_exporter/releases/download/v1.8.2/node_exporter-1.8.2.linux-amd64.tar.gz
-tar xvf node_exporter-1.8.2.linux-amd64.tar.gz
+# Получаем ссылку на последнюю версию
+latest_url=$(curl -s https://api.github.com/repos/prometheus/node_exporter/releases/latest | grep "browser_download_url.*linux-amd64.tar.gz" | cut -d '"' -f 4)
+wget -O node_exporter_latest.tar.gz "$latest_url"
+tar xvf node_exporter_latest.tar.gz
+rm node_exporter_latest.tar.gz
 
-rm node_exporter-1.8.2.linux-amd64.tar.gz
-sudo mv node_exporter-1.8.2.linux-amd64 node_exporter
+sudo mv node_exporter-* node_exporter
 chmod +x node_exporter/node_exporter
 sudo mv node_exporter/node_exporter /usr/bin/
 rm -Rvf node_exporter/

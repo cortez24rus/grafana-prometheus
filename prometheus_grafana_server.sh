@@ -64,3 +64,6 @@ sudo apt-get update && sudo apt-get install grafana -y
 
 sudo systemctl daemon-reload && sudo systemctl enable grafana-server && sudo systemctl restart grafana-server
 sudo ufw allow 3000
+
+echo "Скопируйте ссылку для dashboard"
+echo "https://grafana.com/grafana/dashboards/1860-node-exporter-full/"

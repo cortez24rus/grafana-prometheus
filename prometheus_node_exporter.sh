@@ -11,13 +11,15 @@ chmod +x node_exporter/node_exporter
 sudo mv node_exporter/node_exporter /usr/bin/
 rm -Rvf node_exporter/
 
-sudo tee /etc/systemd/system/exporterd.service > /dev/null <<EOF
+sudo cat > //etc/systemd/system/exporterd.service <<EOF
 [Unit]
 Description=Node Exporter
 After=network.target
+
 [Service]
 User=root
 ExecStart=/usr/bin/node_exporter
+
 [Install]
 WantedBy=multi-user.target
 EOF

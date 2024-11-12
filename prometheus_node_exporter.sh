@@ -27,5 +27,3 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable exporterd.service
 sudo systemctl start exporterd.service
-
-ufw allow 9100
